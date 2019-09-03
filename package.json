@@ -1,7 +1,7 @@
 {
   "name": "winston-bigquery",
   "version": "1.0.0",
-  "description": "a typescript boilerplate based on best practices and tricks 🦄",
+  "description": "winston transport for google's bigquery",
   "main": "dist/server.js",
   "author": "Pavel 'PK' Kaminsky <kaminsky.pavel@gmail.com> (http://www.pavel-kaminsky.com)",
   "license": "ISC",
@@ -11,60 +11,30 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "ts-node-dev src/server.ts",
+    "start": "ts-node-dev src/index.ts",
     "format": "prettier --write src/**/*.{json,ts}",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint src/**/*.ts --fix",
     "lint:prettier": "prettier --config .prettierrc --write src/**/*.{ts,js,json}",
-    "jscpd": "jscpd",
-    "checkLicenses": "jsgl --local 1",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "swagger": "swagger-jsdoc -d .swagger.js src/routes/*.ts",
     "precommit": "lint-staged",
     "prepush": "npm run build"
   },
-  "homepage": "www.pavel-kaminsky.com",
+  "homepage": "https://github.com/kaminskypavel/winston-bigquery",
   "dependencies": {
-    "@types/body-parser": "^1.17.1",
-    "@types/express-validator": "^3.0.0",
-    "@types/query-string": "^6.3.0",
-    "body-parser": "^1.19.0",
-    "chalk": "^2.4.2",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
     "dotenv": "^8.0.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "express-rate-limit": "^2.12.1",
-    "express-session": "^1.15.6",
-    "express-status-monitor": "^1.2.6",
-    "express-validator": "^6.1.1",
-    "helmet": "^3.20.0",
     "husky": "^3.0.4",
-    "isomorphic-fetch": "^2.2.1",
-    "jsend": "^1.1.0",
     "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1",
     "moment": "^2.22.2",
-    "numeral": "^2.0.6",
-    "query-string": "^6.8.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@types/chalk": "2.2.0",
-    "@types/cookie-parser": "1.4.2",
-    "@types/cors": "2.8.6",
     "@types/dotenv": "6.1.1",
-    "@types/express-rate-limit": "2.9.7",
-    "@types/helmet": "0.0.44",
     "@types/jest": "24.0.17",
-    "@types/jsend": "1.0.28",
     "@types/lodash": "4.14.138",
     "@types/node": "12.7.3",
-    "@types/supertest": "2.0.8",
-    "@types/swagger-ui-express": "3.0.1",
     "@types/winston": "2.4.4",
     "@typescript-eslint/eslint-plugin": "2.0.0",
     "@typescript-eslint/parser": "2.0.0",
@@ -78,14 +48,8 @@
     "eslint-plugin-json": "1.4.0",
     "eslint-plugin-prettier": "3.1.0",
     "jest": "24.9.0",
-    "js-green-licenses": "1.1.0",
-    "jscpd": "2.0.15",
     "lint-staged": "9.2.5",
     "prettier": "1.18.2",
-    "setup-polly-jest": "0.5.2",
-    "supertest": "4.0.2",
-    "swagger-jsdoc": "3.4.0",
-    "swagger-ui-express": "4.0.7",
     "ts-jest": "24.0.2",
     "ts-node-dev": "1.0.0-pre.42",
     "typescript": "3.5.3"
@@ -93,14 +57,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run format && npm run jscpd && npm test && npm run build"
+      "pre-push": "npm run format && npm test && npm run build"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaminskypavel/simple-node-typescript-starter.git"
+    "url": "git+https://github.com/kaminskypavel/winston-bigquery.git"
   },
   "bugs": {
-    "url": "https://github.com/kaminskypavel/simple-node-typescript-starter/issues"
+    "url": "https://github.com/kaminskypavel/winston-bigquery/issues"
   }
 }
