@@ -18,7 +18,7 @@ export class WinstonBigQuery extends Transport {
 	constructor(options: WinstonBigQueryOptions) {
 		super();
 		dotenv.config();
-		console.log(new BigQuery());
+
 		this.bigquery = new BigQuery();
 
 		if (isEmpty(options.datasetId)) {
