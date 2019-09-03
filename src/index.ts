@@ -2,6 +2,8 @@ import Transport from 'winston-transport';
 import {BigQuery} from '@google-cloud/bigquery';
 import env from './commons/env';
 import _ from 'lodash';
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface WinstonBigQueryOptions {
 	datasetId: string;
@@ -30,20 +32,30 @@ export class WinstonBigQuery extends Transport {
 			!options.applicationCredentials
 		) {
 			throw new Error(
-				'Missing required GOOGLE_APPLICATION_CREDENTIALS, please add it as to construction object or as enviroment variable.\nread more here : http://bit.ly/2k0D1cj '
+				'Missing required GOOGLE_APPLICATION_CREDENTIALS, please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
 			);
 		}
 
+		if (env.isDevelopment()) {
+			console.log(
+				`loading GOOGLE_APPLICATION_CREDENTIALS from "${env.getEnvVariable(
+					'GOOGLE_APPLICATION_CREDENTIALS'
+				)}"`
+			);
+		}
 		this.options = options;
 	}
 
 	async log(info: any, next: () => void) {
 		const {datasetId, tableId} = this.options;
-		await this.bigquery
-			.dataset(datasetId)
-			.table(tableId)
-			.insert(info);
 
+		const {message, level, splat} = info;
+		// await this.bigquery
+		// 	.dataset(datasetId)
+		// 	.table(tableId)
+		// 	.insert(info);
+		console.log(JSON.stringify(info));
+		console.log(message, level, splat);
 		next();
 	}
 }

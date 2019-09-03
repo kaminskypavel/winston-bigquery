@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "ts-node-dev src/index.ts",
+    "dev": "ts-node-dev src/index.test.ts",
     "format": "prettier --write src/**/*.{json,ts}",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint src/**/*.ts --fix",
@@ -41,7 +41,7 @@
     "@types/jest": "24.0.17",
     "@types/lodash": "4.14.138",
     "@types/node": "12.7.3",
-    "@types/winston": "2.4.4",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "2.0.0",
     "@typescript-eslint/parser": "2.0.0",
     "cross-env": "5.2.1",
