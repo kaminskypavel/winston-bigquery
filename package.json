@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kaminskypavel/winston-bigquery",
   "dependencies": {
+    "@google-cloud/bigquery": "^4.1.8",
     "dotenv": "^8.0.0",
     "husky": "^3.0.4",
     "lodash": "^4.17.15",
