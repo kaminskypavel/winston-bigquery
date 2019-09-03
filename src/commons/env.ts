@@ -13,7 +13,8 @@ const isProduction = (): boolean => process.env.NODE_ENV === 'production';
 const setEnvVariable = (name: string, value: string) =>
 	(process.env[name] = value);
 
-const getEnvVariable = (name: string) => process.env[name];
+const getEnvVariable = (name: string): string | null =>
+	_.get(process.env, name, null);
 
 type EnvName = 'production' | 'development' | 'ci' | 'test';
 
