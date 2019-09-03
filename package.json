@@ -1,6 +1,6 @@
 {
   "name": "winston-bigquery",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "winston transport for google's bigquery",
   "main": "dist/server.js",
   "author": "Pavel 'PK' Kaminsky <kaminsky.pavel@gmail.com> (http://www.pavel-kaminsky.com)",
@@ -20,7 +20,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
-    "prepush": "npm run build"
+    "prepush": "npm run build",
+    "semantic-release": "semantic-release"
   },
   "homepage": "https://github.com/kaminskypavel/winston-bigquery",
   "dependencies": {
@@ -32,6 +33,10 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "^6.3.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/release-notes-generator": "^7.3.0",
     "@types/dotenv": "6.1.1",
     "@types/jest": "24.0.17",
     "@types/lodash": "4.14.138",
@@ -51,6 +56,7 @@
     "jest": "24.9.0",
     "lint-staged": "9.2.5",
     "prettier": "1.18.2",
+    "semantic-release": "^15.13.24",
     "ts-jest": "24.0.2",
     "ts-node-dev": "1.0.0-pre.42",
     "typescript": "3.5.3"
@@ -63,7 +69,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaminskypavel/winston-bigquery.git"
+    "url": "https://github.com/kaminskypavel/winston-bigquery.git"
   },
   "bugs": {
     "url": "https://github.com/kaminskypavel/winston-bigquery/issues"
