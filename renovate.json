@@ -3,5 +3,11 @@
 	"automerge": true,
 	"major": {
 		"automerge": false
-	}
+	},
+	"packageRules": [
+		{
+			"depTypeList": ["devDependencies"],
+			"automerge": true
+		}
+	]
 }
