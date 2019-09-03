@@ -50,19 +50,20 @@ you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
     "type": "TIMESTAMP"
   },
   {
+    "name": "level",
+    "type": "STRING"
+  },
+  {
     "name": "message",
     "type": "STRING"
   },
   {
     "name": "meta",
     "type": "STRING"
-  },
-  {
-    "name": "level",
-    "type": "STRING"
   }
 ]
 ```
+[![preview](https://user-images.githubusercontent.com/4253088/64213371-6f1bb500-ceb5-11e9-8142-1504a383f01d.png)]
  
 ### Installing Winston-Bigquery
 > npm i winston-bigquery
