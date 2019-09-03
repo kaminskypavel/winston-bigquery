@@ -30,3 +30,4 @@ tbd
 #### License: MIT
 
 [0]: https://cloud.google.com/logging/docs/setup/nodejs#using_winston
+[1]: https://github.com/winstonjs/winston/blob/master/docs/transports.md
