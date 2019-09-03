@@ -1,0 +1,7 @@
+{
+  "*.{ts,js,json}": [
+    "prettier --config .prettierrc --write",
+    "eslint --fix",
+    "git add"
+  ]
+}
