@@ -5,9 +5,10 @@ module.exports = {
 		[
 			'@semantic-release/changelog',
 			{
-				changelogFile: 'docs/CHANGELOG.md'
+				changelogFile: 'CHANGELOG.md'
 			}
 		],
-		'@semantic-release/git'
+		'@semantic-release/git',
+		'@semantic-release/npm'
 	]
 };
