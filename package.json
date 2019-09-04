@@ -21,6 +21,7 @@
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
     "prepush": "npm run build",
+    "prepublishOnly": "npm run build",
     "semantic-release": "semantic-release"
   },
   "homepage": "https://github.com/kaminskypavel/winston-bigquery",
