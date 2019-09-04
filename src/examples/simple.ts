@@ -11,8 +11,10 @@ const logger = winston.createLogger({
 	]
 });
 
-logger.info('this is a Hello World', {
-	meta1: 1,
-	meta2: 'string',
-	meta3: {deepObj: 1}
+logger.info('Hello World', {
+	firstName: 'chuck',
+	lastName: 'norris',
+	session: {
+		userId: 'oh wow! this is nested!'
+	}
 });
