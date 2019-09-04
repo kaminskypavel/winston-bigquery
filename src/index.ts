@@ -61,12 +61,7 @@ export class WinstonBigQuery extends Transport {
 		await this.bigquery
 			.dataset(datasetId)
 			.table(tableId)
-			.insert({
-				timestamp,
-				message,
-				level,
-				meta
-			});
+			.insert({timestamp, message, level, meta});
 
 		next();
 	}
