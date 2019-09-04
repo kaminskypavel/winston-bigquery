@@ -63,7 +63,7 @@ you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
   }
 ]
 ```
-[![preview](https://user-images.githubusercontent.com/4253088/64213371-6f1bb500-ceb5-11e9-8142-1504a383f01d.png)]
+[![preview](https://user-images.githubusercontent.com/4253088/64270806-d0d73000-cf44-11e9-997d-1987eb26c87b.png)]
  
 ### Installing Winston-Bigquery
 `npm i winston-bigquery`
