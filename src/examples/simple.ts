@@ -1,12 +1,12 @@
-import {WinstonBigQuery} from './index';
+import {WinstonBigQuery} from '../';
 import winston from 'winston';
 
 const logger = winston.createLogger({
 	level: 'debug',
 	transports: [
 		new WinstonBigQuery({
-			tableId: 'winston_logs',
-			datasetId: 'logs'
+			datasetId: 'logs',
+			tableId: 'my_winston_logs'
 		})
 	]
 });
