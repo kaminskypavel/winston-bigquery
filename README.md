@@ -7,7 +7,7 @@
 
 ## Usage
 ``` js
-import {WinstonBigQuery} from './index';
+import {WinstonBigQuery} from 'winston-bigquery';
 import winston, {format} from 'winston';
 
 const logger = winston.createLogger({
@@ -15,8 +15,8 @@ const logger = winston.createLogger({
 	transports: [
 		.....
 		new WinstonBigQuery({
-			tableId: 'winston_logs',
 			datasetId: 'logs'
+			tableId: 'winston_logs',
 		})
 		.....
 	]
