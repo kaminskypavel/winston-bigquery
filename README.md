@@ -66,12 +66,12 @@ you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
 [![preview](https://user-images.githubusercontent.com/4253088/64213371-6f1bb500-ceb5-11e9-8142-1504a383f01d.png)]
  
 ### Installing Winston-Bigquery
-> npm i winston-bigquery
+`npm i winston-bigquery`
 
-## Run Tests
->  npm test
+### Run Tests
+`npm test`
 
-#### Author: [Pavel 'PK' Kaminsky](https://www.pavel-kaminsky.com)
+### Author: [Pavel 'PK' Kaminsky](https://www.pavel-kaminsky.com)
 
 [0]: https://cloud.google.com/logging/docs/setup/nodejs#using_winston
 [1]: https://github.com/winstonjs/winston/blob/master/docs/transports.md
