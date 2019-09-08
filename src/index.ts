@@ -123,16 +123,10 @@ export class WinstonBigQuery extends Transport {
 			}
 		);
 
-		try {
-			const r = await this.bigquery
-				.dataset(datasetId)
-				.table(tableId)
-				.insert(flatInfo);
-
-			console.log(r);
-		} catch (e) {
-			console.log(e.errors[0]);
-		}
+		await this.bigquery
+			.dataset(datasetId)
+			.table(tableId)
+			.insert(flatInfo);
 
 		next();
 	}
