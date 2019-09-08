@@ -5,8 +5,8 @@ const logger = winston.createLogger({
 	level: 'debug',
 	transports: [
 		new WinstonBigQuery({
-			datasetId: 'logs',
-			tableId: 'my_winston_logs3',
+			dataset: 'logs',
+			table: 'my_winston_logs3',
 			schema: {
 				timestamp: 'timestamp',
 				firstName: 'string',

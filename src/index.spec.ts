@@ -5,21 +5,22 @@ import {WinstonBigQuery} from './index';
 describe('WinstonBigQuery', () => {
 	describe('#constructor', () => {
 		it('should verify datasetId is set', () => {
-			const options = {tableId: 'tableId'} as any;
+			const options = {table: 'tableId'} as any;
+
 			expect(() => new WinstonBigQuery(options)).toThrow(
 				"Missing required 'datasetId' in construction"
 			);
 		});
 
 		it('should verify tableId is set', () => {
-			const options = {datasetId: 'datasetId'} as any;
+			const options = {dataset: 'datasetId'} as any;
 			expect(() => new WinstonBigQuery(options)).toThrow(
 				"Missing required 'tableId' in construction"
 			);
 		});
 
 		it('should verify GOOGLE_APPLICATION_CREDENTIALS is set', () => {
-			const options = {datasetId: 'datasetId', tableId: 'tableId'} as any;
+			const options = {dataset: 'datasetId', table: 'tableId'} as any;
 			process.env['GOOGLE_APPLICATION_CREDENTIALS'] = '';
 			expect(() => new WinstonBigQuery(options)).toThrow(
 				/Missing required GOOGLE_APPLICATION_CREDENTIALS/
@@ -30,8 +31,8 @@ describe('WinstonBigQuery', () => {
 	describe('#log', () => {
 		process.env['GOOGLE_APPLICATION_CREDENTIALS'] = 'whatever';
 		const logger = new WinstonBigQuery({
-			tableId: 'tableId',
-			datasetId: 'dataseId'
+			table: 'tableId',
+			dataset: 'dataseId'
 		});
 
 		beforeEach(() => {

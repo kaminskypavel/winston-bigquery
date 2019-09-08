@@ -19,8 +19,8 @@ type SchemaRecord = {
 };
 
 interface WinstonBigQueryOptions {
-	datasetId: string;
-	tableId: string;
+	dataset: string;
+	table: string;
 	applicationCredentials?: string;
 	schema?: SchemaRecord;
 	dropCreate?: boolean;
@@ -38,11 +38,11 @@ export class WinstonBigQuery extends Transport {
 
 		this.bigquery = new BigQuery();
 
-		if (isEmpty(options.datasetId)) {
+		if (isEmpty(options.dataset)) {
 			throw new Error("Missing required 'datasetId' in construction");
 		}
 
-		if (isEmpty(options.tableId)) {
+		if (isEmpty(options.table)) {
 			throw new Error("Missing required 'tableId' in construction");
 		}
 
@@ -73,12 +73,12 @@ export class WinstonBigQuery extends Transport {
 	}
 
 	async dropCreateTable() {
-		const {datasetId, tableId, schema} = this.options;
+		const {dataset, table, schema} = this.options;
 
 		try {
 			await this.bigquery
-				.dataset(datasetId)
-				.table(tableId)
+				.dataset(dataset)
+				.table(table)
 				.delete();
 			// eslint-disable-next-line no-empty
 		} catch (e) {}
@@ -103,13 +103,13 @@ export class WinstonBigQuery extends Transport {
 			.map(([name, type]) => `${name}:${type}`)
 			.join(',');
 
-		await this.bigquery.dataset(datasetId).createTable(tableId, {
+		await this.bigquery.dataset(dataset).createTable(table, {
 			schema: mergedSchema as any
 		});
 	}
 
 	async log(info: any, next?: () => void) {
-		const {datasetId, tableId} = this.options;
+		const {dataset, table} = this.options;
 
 		const flatInfo = flatten(
 			{
@@ -124,8 +124,8 @@ export class WinstonBigQuery extends Transport {
 		);
 
 		await this.bigquery
-			.dataset(datasetId)
-			.table(tableId)
+			.dataset(dataset)
+			.table(table)
 			.insert(flatInfo);
 
 		next();
