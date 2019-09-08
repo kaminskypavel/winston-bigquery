@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.4...v1.0.5) (2019-09-08)
+
+
+### Bug Fixes
+
+* do not catch a loging exception in log function ([e173606](https://github.com/kaminskypavel/winston-bigquery/commit/e173606))
+
 ## [1.0.4](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.3...v1.0.4) (2019-09-08)
 
 
