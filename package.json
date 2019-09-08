@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev src/examples/simple.ts",
+    "dev": "ts-node-dev --respawn src/examples/drop-create-table.ts",
     "format": "prettier --write src/**/*.{json,ts}",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint src/**/*.ts --fix",
@@ -28,6 +28,7 @@
   "dependencies": {
     "@google-cloud/bigquery": "^4.1.8",
     "dotenv": "^8.0.0",
+    "flat": "^4.1.0",
     "husky": "^3.0.4",
     "lodash": "^4.17.15",
     "moment": "^2.22.2",
@@ -40,6 +41,7 @@
     "@semantic-release/npm": "^5.1.15",
     "@semantic-release/release-notes-generator": "^7.3.0",
     "@types/dotenv": "6.1.1",
+    "@types/flat": "0.0.28",
     "@types/jest": "24.0.17",
     "@types/lodash": "4.14.138",
     "@types/node": "12.7.3",

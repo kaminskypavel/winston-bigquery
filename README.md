@@ -40,9 +40,15 @@ and easy sql-like querying capabilities, it is also optimized to search through 
 winston-bigquery comes with its' own type definitions, so you wont have to use [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
 ## Schema
-Bigquery need a schema for the its table, for now you will have to create it manually
-you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
- 
+BigQuery need a schema for the its table.
+this can be achieved by 2 ways :
+
+1. create your schema manually
+2. use the `dropCreate:true` and `schema:{...}` options in the constructor.  
+   please refer the [drop-create-table example](./src/examples/drop-create-table.ts)
+
+if you do not provide a schema, it will default to 
+
 ``` js
 [
   {
@@ -63,7 +69,7 @@ you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
   }
 ]
 ```
-[![preview](https://user-images.githubusercontent.com/4253088/64213371-6f1bb500-ceb5-11e9-8142-1504a383f01d.png)]
+
  
 ### Installing Winston-Bigquery
 `npm i winston-bigquery`
@@ -77,3 +83,4 @@ you can read more [here](https://cloud.google.com/bigquery/docs/schemas)
 [1]: https://github.com/winstonjs/winston/blob/master/docs/transports.md
 [2]: https://cloud.google.com/bigquery/docs/quickstarts/quickstart-client-libraries
 [3]: https://github.com/googleapis/nodejs-bigquery/blob/master/samples/insertRowsAsStream.js
+[4]: https://googleapis.dev/nodejs/bigquery/latest
