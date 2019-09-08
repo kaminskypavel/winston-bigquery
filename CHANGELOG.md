@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.5...v1.1.0) (2019-09-08)
+
+
+### Features
+
+* BREAKING CHANGE: table are no more droped. also added a timeout delay between the table creation and insert ([389b45c](https://github.com/kaminskypavel/winston-bigquery/commit/389b45c))
+
 ## [1.0.5](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.4...v1.0.5) (2019-09-08)
 
 
