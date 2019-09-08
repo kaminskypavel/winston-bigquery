@@ -1,12 +1,13 @@
 import {WinstonBigQuery} from '../';
 import winston from 'winston';
+import {delay} from '../commons/delay';
 
 const logger = winston.createLogger({
 	level: 'debug',
 	transports: [
 		new WinstonBigQuery({
 			dataset: 'logs',
-			table: 'my_winston_logs3',
+			table: 'my_winston_logs',
 			schema: {
 				timestamp: 'timestamp',
 				firstName: 'string',
@@ -15,15 +16,23 @@ const logger = winston.createLogger({
 					userId: 'integer'
 				}
 			},
-			dropCreate: true
+			create: true
 		})
 	]
 });
 
-logger.debug('Round kick from chuck! Bam!', {
-	session: {
-		userId: 1
-	},
-	firstName: 'chuck',
-	lastName: 'norris'
-});
+(async () => {
+	try {
+		await delay(3 * 1000);
+
+		logger.debug('Round kick from chuck! Bam!', {
+			session: {
+				userId: 1
+			},
+			firstName: 'chuck',
+			lastName: 'norris'
+		});
+	} catch (error) {
+		console.log(error);
+	}
+})();

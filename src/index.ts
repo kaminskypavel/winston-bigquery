@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import moment from 'moment';
 import flatten from 'flat';
 import _ from 'lodash';
+import {delay} from './commons/delay';
 
 type BigQuerySchemaTypes =
 	| 'string'
@@ -23,14 +24,15 @@ interface WinstonBigQueryOptions {
 	table: string;
 	applicationCredentials?: string;
 	schema?: SchemaRecord;
-	dropCreate?: boolean;
+	create?: boolean;
+	timeout?: number;
 }
 
 export class WinstonBigQuery extends Transport {
 	bigquery: BigQuery;
 	options: WinstonBigQueryOptions;
 
-	private isSchemaVerified: boolean;
+	private isInitialized: boolean;
 
 	constructor(options: WinstonBigQueryOptions) {
 		super();
@@ -63,25 +65,29 @@ export class WinstonBigQuery extends Transport {
 			);
 		}
 
-		this.options = _.extend({}, {dropCreate: false, schema: null}, options);
+		this.options = _.extend(
+			{},
+			{
+				create: false,
+				schema: null,
+				timeout: 20 * 1000
+			},
+			options
+		);
 
-		const {dropCreate} = this.options;
+		const {create} = this.options;
 
-		if (dropCreate) {
-			this.dropCreateTable();
+		if (create) {
+			this.dropCreateTable().then(() => {
+				this.isInitialized = true;
+			});
+		} else {
+			this.isInitialized = true;
 		}
 	}
 
 	async dropCreateTable() {
 		const {dataset, table, schema} = this.options;
-
-		try {
-			await this.bigquery
-				.dataset(dataset)
-				.table(table)
-				.delete();
-			// eslint-disable-next-line no-empty
-		} catch (e) {}
 
 		const mandatorySchemaFields = {
 			timestamp: 'timestamp',
@@ -109,7 +115,16 @@ export class WinstonBigQuery extends Transport {
 	}
 
 	async log(info: any, next?: () => void) {
-		const {dataset, table} = this.options;
+		const {dataset, table, timeout} = this.options;
+
+		if (!this.isInitialized) {
+			await delay(timeout);
+
+			if (!this.isInitialized)
+				throw new Error(
+					`connection is not initialized after ${timeout}ms , consider increasing 'timeout' option`
+				);
+		}
 
 		const flatInfo = flatten(
 			{
@@ -123,7 +138,7 @@ export class WinstonBigQuery extends Transport {
 			}
 		);
 
-		await this.bigquery
+		const r = await this.bigquery
 			.dataset(dataset)
 			.table(table)
 			.insert(flatInfo);

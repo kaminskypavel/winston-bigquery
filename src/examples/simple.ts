@@ -1,18 +1,21 @@
 import {WinstonBigQuery} from '../';
 import winston from 'winston';
+import {delay} from '../commons/delay';
 
 const logger = winston.createLogger({
 	level: 'debug',
 	transports: [
 		new WinstonBigQuery({
 			dataset: 'logs',
-			table: 'my_winston_logs3'
+			table: 'my_winston_logs'
 		})
 	]
 });
 
-try {
-	logger.warn('Hello World');
-} catch (error) {
-	console.log(error);
-}
+(async () => {
+	try {
+		logger.info('Hello World');
+	} catch (error) {
+		console.log(error);
+	}
+})();
