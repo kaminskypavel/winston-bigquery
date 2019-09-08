@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kaminskypavel/winston-bigquery/compare/v1.1.0...v1.1.1) (2019-09-08)
+
+
+### Bug Fixes
+
+* change "main" to the correct file in package ([b0a353a](https://github.com/kaminskypavel/winston-bigquery/commit/b0a353a))
+
 # [1.1.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.5...v1.1.0) (2019-09-08)
 
 
