@@ -47,7 +47,7 @@ this can be achieved by 2 ways :
 2. use the `dropCreate:true` and `schema:{...}` options in the constructor.  
    please refer the [drop-create-table example](./src/examples/drop-create-table.ts)
 
-if you do not provide a schema, it will default to 
+the following field will always be auto-created for you 
 
 ``` js
 [
@@ -61,10 +61,6 @@ if you do not provide a schema, it will default to
   },
   {
     "name": "message",
-    "type": "STRING"
-  },
-  {
-    "name": "meta",
     "type": "STRING"
   }
 ]
