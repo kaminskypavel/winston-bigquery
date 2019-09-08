@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.3...v1.0.4) (2019-09-08)
+
+
+### Bug Fixes
+
+* **example:** update the example and trigger a release ([e3aa79a](https://github.com/kaminskypavel/winston-bigquery/commit/e3aa79a))
+
 ## [1.0.3](https://github.com/kaminskypavel/winston-bigquery/compare/v1.0.2...v1.0.3) (2019-09-04)
 
 
