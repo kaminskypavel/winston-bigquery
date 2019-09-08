@@ -6,15 +6,13 @@ const logger = winston.createLogger({
 	transports: [
 		new WinstonBigQuery({
 			datasetId: 'logs',
-			tableId: 'my_winston_logs'
+			tableId: 'my_winston_logs3'
 		})
 	]
 });
 
-logger.info('Hello World', {
-	firstName: 'chuck',
-	lastName: 'norris',
-	session: {
-		userId: 'oh wow! this is nested!'
-	}
-});
+try {
+	logger.warn('Hello World');
+} catch (error) {
+	console.log(error);
+}
