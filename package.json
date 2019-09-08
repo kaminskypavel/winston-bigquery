@@ -2,7 +2,7 @@
   "name": "winston-bigquery",
   "version": "0.0.0-development",
   "description": "winston transport for google's bigquery",
-  "main": "dist/server.js",
+  "main": "dist/index.js",
   "author": "Pavel 'PK' Kaminsky <kaminsky.pavel@gmail.com> (http://www.pavel-kaminsky.com)",
   "license": "ISC",
   "engineStrict": true,
