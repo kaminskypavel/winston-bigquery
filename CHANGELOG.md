@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.1.1...v1.2.0) (2019-09-10)
+
+
+### Features
+
+* add a support for a SERVICE_ACCOUNT flag ([41a496b](https://github.com/kaminskypavel/winston-bigquery/commit/41a496b))
+
 ## [1.1.1](https://github.com/kaminskypavel/winston-bigquery/compare/v1.1.0...v1.1.1) (2019-09-08)
 
 
