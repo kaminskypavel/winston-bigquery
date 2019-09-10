@@ -53,7 +53,7 @@ this can be achieved by 2 ways :
 
 1. create your schema manually
 2. use the `dropCreate:true` and `schema:{...}` options in the constructor.  
-   please refer the [drop-create-table example](./src/examples/drop-create-table.ts)
+   please refer the [create-table example](./src/examples/create-table.ts)
 
 the following field will always be auto-created for you 
 
