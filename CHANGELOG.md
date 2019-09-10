@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.2...v1.3.0) (2019-09-10)
+
+
+### Features
+
+* add a nested convertion and saving into meta field + docs ([49cdf6c](https://github.com/kaminskypavel/winston-bigquery/commit/49cdf6c))
+
 ## [1.2.2](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.1...v1.2.2) (2019-09-10)
 
 
