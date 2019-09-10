@@ -1,4 +1,9 @@
-import {WinstonBigQuery} from '../';
+/**
+ * This example will is assuming you've already have a table create in bigquery.
+ * if you'd like to create a table from your data check create-table.ts
+ */
+
+import {WinstonBigQuery} from '..';
 import winston from 'winston';
 
 const logger = winston.createLogger({
