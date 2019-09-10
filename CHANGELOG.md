@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.3.0...v1.4.0) (2019-09-10)
+
+
+### Bug Fixes
+
+* do not instert empty json {} in meta if no meta is present, instead use NULL ([f2bffed](https://github.com/kaminskypavel/winston-bigquery/commit/f2bffed))
+* typo in env getEnvironment ([2173e48](https://github.com/kaminskypavel/winston-bigquery/commit/2173e48))
+
+
+### Features
+
+* add a nested convertion and saving into meta field + docs ([71d063e](https://github.com/kaminskypavel/winston-bigquery/commit/71d063e))
+
 # [1.3.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.2...v1.3.0) (2019-09-10)
 
 
