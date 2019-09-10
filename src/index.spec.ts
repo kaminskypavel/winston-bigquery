@@ -1,6 +1,6 @@
 jest.mock('@google-cloud/bigquery');
 import {BigQuery} from '@google-cloud/bigquery';
-import {WinstonBigQuery} from './index';
+import {WinstonBigQuery} from '.';
 
 describe('WinstonBigQuery', () => {
 	describe('#constructor', () => {
@@ -36,7 +36,9 @@ describe('WinstonBigQuery', () => {
 				message: 'this is a Hello World',
 				meta1: 1,
 				meta2: 'string',
-				meta3: {deepObj: 1}
+				meta3: {
+					deepObj: 1
+				}
 			});
 			const a = new BigQuery();
 			expect(logger.bigquery.dataset).toHaveBeenCalledWith('dataseId');

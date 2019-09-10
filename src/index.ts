@@ -15,15 +15,15 @@ type BigQuerySchemaTypes =
 	| 'boolean'
 	| 'timestamp';
 
-type SchemaRecord = {
-	[n: string]: BigQuerySchemaTypes | SchemaRecord;
+type BigQueryTableSchema = {
+	[n: string]: BigQuerySchemaTypes | BigQueryTableSchema;
 };
 
 interface WinstonBigQueryOptions {
 	dataset: string;
 	table: string;
 	applicationCredentials?: string;
-	schema?: SchemaRecord;
+	schema?: BigQueryTableSchema;
 	create?: boolean;
 	timeout?: number;
 }
@@ -31,6 +31,7 @@ interface WinstonBigQueryOptions {
 export class WinstonBigQuery extends Transport {
 	bigquery: BigQuery;
 	options: WinstonBigQueryOptions;
+	schema: BigQueryTableSchema;
 
 	private isInitialized: boolean;
 
@@ -76,7 +77,7 @@ export class WinstonBigQuery extends Transport {
 		const {create} = this.options;
 
 		if (create) {
-			this.dropCreateTable().then(() => {
+			this.createTable().then(() => {
 				this.isInitialized = true;
 			});
 		} else {
@@ -84,13 +85,35 @@ export class WinstonBigQuery extends Transport {
 		}
 	}
 
-	async dropCreateTable() {
+	async getTableSchema() {
+		const {dataset, table} = this.options;
+
+		const meta: TableMetaData = ((await this.bigquery
+			.dataset(dataset)
+			.table(table)
+			.getMetadata())[0] as unknown) as TableMetaData;
+
+		const schema = meta.schema.fields.reduce(
+			(
+				acc: {[key: string]: string},
+				{name, type}: {name: string; type: string}
+			) => {
+				acc[name] = type.toLowerCase();
+				return acc;
+			},
+			{}
+		);
+		return schema;
+	}
+
+	async createTable() {
 		const {dataset, table, schema} = this.options;
 
 		const mandatorySchemaFields = {
 			timestamp: 'timestamp',
 			level: 'string',
-			message: 'string'
+			message: 'string',
+			meta: 'string'
 		};
 
 		const userSchemaFields = flatten(
@@ -100,15 +123,19 @@ export class WinstonBigQuery extends Transport {
 			}
 		);
 
-		const mergedSchema = Object.entries({
+		const mergedSchema = {
 			...mandatorySchemaFields,
 			...userSchemaFields
-		})
+		};
+
+		const shorthandMergedSchema = Object.entries(mergedSchema)
 			.map(([name, type]) => `${name}:${type}`)
 			.join(',');
 
+		this.schema = mergedSchema as BigQueryTableSchema;
+
 		await this.bigquery.dataset(dataset).createTable(table, {
-			schema: mergedSchema as any
+			schema: shorthandMergedSchema as any
 		});
 	}
 
@@ -124,7 +151,12 @@ export class WinstonBigQuery extends Transport {
 				);
 		}
 
-		const flatInfo = flatten(
+		if (!this.schema) {
+			const schema = await this.getTableSchema();
+			this.options.schema = schema as BigQueryTableSchema;
+		}
+
+		const flatInfo: {[key: string]: string} = flatten(
 			{
 				timestamp: moment()
 					.utc()
@@ -136,10 +168,17 @@ export class WinstonBigQuery extends Transport {
 			}
 		);
 
+		const flatNormalizedInfo = {
+			..._.pick(flatInfo, Object.keys(this.options.schema)),
+			meta: JSON.stringify(
+				_.omit(flatInfo, Object.keys(this.options.schema))
+			)
+		};
+
 		const r = await this.bigquery
 			.dataset(dataset)
 			.table(table)
-			.insert(flatInfo);
+			.insert(flatNormalizedInfo);
 
 		next();
 	}
