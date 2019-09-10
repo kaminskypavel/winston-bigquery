@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn src/examples/simple.ts",
+    "dev": "ts-node-dev --respawn src/examples/nested.ts",
     "format": "prettier --write src/**/*.{json,ts}",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint src/**/*.ts --fix",

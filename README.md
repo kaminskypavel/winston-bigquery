@@ -70,10 +70,23 @@ the following field will always be auto-created for you
   {
     "name": "message",
     "type": "STRING"
+  },
+  {
+    "name": "meta",
+    "type": "STRING"
   }
 ]
 ```
 
+### Metadata field
+everything outside the schema will automatically be flattened out,
+converted to string and pushed into the "meta" fieldl
+
+later on you can query the json data with the built-in BigQuery functions
+for example : 
+```sql 
+SELECT t.*, JSON_EXTRACT(t.meta,"$.character_name") FROM `easy-tax-8097d.logs.my_winston_logs` t LIMIT 1000
+```
  
 ### Installing Winston-Bigquery
 `npm i winston-bigquery`
