@@ -65,14 +65,8 @@ export class WinstonBigQuery extends Transport {
 		const credentialsJsonPath =
 			applicationCredentials || envGoogleAppCred || envServiceAccount;
 
-		if (isEmpty(credentialsJsonPath)) {
-			throw new Error(
-				'Missing required GOOGLE_APPLICATION_CREDENTIALS (or SERVICE_ACCOUNT), please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
-			);
-		}
-
 		if (env.isDevelopment() || env.isTest()) {
-			console.log(`loading credentials from ${applicationCredentials}`);
+			console.log(`loading credentials from ${credentialsJsonPath}`);
 		}
 
 		this.bigquery = new BigQuery({
