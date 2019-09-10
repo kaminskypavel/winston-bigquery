@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.1...v1.2.2) (2019-09-10)
+
+
+### Bug Fixes
+
+* do not intentionally throw and error if no credentials are passed, let the bigquery constructor do that ([068348e](https://github.com/kaminskypavel/winston-bigquery/commit/068348e))
+
 ## [1.2.1](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.0...v1.2.1) (2019-09-10)
 
 
