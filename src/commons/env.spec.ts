@@ -2,7 +2,7 @@ import env from './env';
 
 describe('env.ts', () => {
 	beforeEach(() => {
-		env.setEnviroment('development');
+		env.setEnvironment('development');
 	});
 
 	describe('#isDevelopment', () => {
@@ -27,7 +27,7 @@ describe('env.ts', () => {
 		});
 
 		it(`should set NODE_ENV correctly`, () => {
-			env.setEnviroment('ci');
+			env.setEnvironment('ci');
 			expect(env.isCI()).toBeTruthy();
 		});
 	});

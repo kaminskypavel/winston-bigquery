@@ -13,23 +13,26 @@ const isProduction = (): boolean => process.env.NODE_ENV === 'production';
 const setEnvVariable = (name: string, value: string) =>
 	(process.env[name] = value);
 
-const getEnvVariable = (name: string): string | null =>
-	_.get(process.env, name, null);
+const unsetEnvVariable = (name: string) => setEnvVariable(name, null);
+
+const getEnvVariable = (name: string) => process.env[name];
 
 type EnvName = 'production' | 'development' | 'ci' | 'test';
 
-const getEnviroment = () =>
-	isProduction() ? 'production' : isCI() ? 'ci' : 'development';
+const getEnvironment = (): EnvName =>
+	(process.env.NODE_ENV as EnvName) || 'development';
 
-const setEnviroment = (envName: EnvName) => setEnvVariable('NODE_ENV', envName);
+const setEnvironment = (envName: EnvName) =>
+	setEnvVariable('NODE_ENV', envName);
 
 export default {
 	isProduction,
 	isCI,
 	isDevelopment,
 	isTest,
-	getEnviroment,
-	setEnviroment,
+	getEnvironment,
+	setEnvironment,
 	setEnvVariable,
-	getEnvVariable
+	getEnvVariable,
+	unsetEnvVariable
 };
