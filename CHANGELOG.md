@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/kaminskypavel/winston-bigquery/compare/v1.2.0...v1.2.1) (2019-09-10)
+
+
+### Bug Fixes
+
+* make use of `applicationCredentials` from options is it's passed in , as the strongest indicator among the 3 ([4fe61b3](https://github.com/kaminskypavel/winston-bigquery/commit/4fe61b3))
+
 # [1.2.0](https://github.com/kaminskypavel/winston-bigquery/compare/v1.1.1...v1.2.0) (2019-09-10)
 
 
