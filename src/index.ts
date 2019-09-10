@@ -168,11 +168,12 @@ export class WinstonBigQuery extends Transport {
 			}
 		);
 
+		const schemaFields = _.pick(flatInfo, Object.keys(this.options.schema));
+		const metaField = _.omit(flatInfo, Object.keys(this.options.schema));
+
 		const flatNormalizedInfo = {
-			..._.pick(flatInfo, Object.keys(this.options.schema)),
-			meta: JSON.stringify(
-				_.omit(flatInfo, Object.keys(this.options.schema))
-			)
+			...schemaFields,
+			meta: _.isEmpty(metaField) ? null : JSON.stringify(metaField)
 		};
 
 		const r = await this.bigquery
