@@ -38,34 +38,6 @@ export class WinstonBigQuery extends Transport {
 		super();
 		dotenv.config();
 
-		this.bigquery = new BigQuery();
-
-		if (isEmpty(options.dataset)) {
-			throw new Error("Missing required 'datasetId' in construction");
-		}
-
-		if (isEmpty(options.table)) {
-			throw new Error("Missing required 'tableId' in construction");
-		}
-
-		if (
-			isEmpty(env.getEnvVariable('GOOGLE_APPLICATION_CREDENTIALS')) &&
-			isEmpty(env.getEnvVariable('SERVICE_ACCOUNT')) &&
-			isEmpty(options.applicationCredentials)
-		) {
-			throw new Error(
-				'Missing required GOOGLE_APPLICATION_CREDENTIALS (or SERVICE_ACCOUNT), please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
-			);
-		}
-
-		if (env.isDevelopment() || env.isTest()) {
-			console.log(
-				`loading credentials from ${env.getEnvVariable(
-					'GOOGLE_APPLICATION_CREDENTIALS'
-				) || env.getEnvVariable('SERVICE_ACCOUNT')}`
-			);
-		}
-
 		this.options = _.extend(
 			{},
 			{
@@ -75,6 +47,37 @@ export class WinstonBigQuery extends Transport {
 			},
 			options
 		);
+
+		if (isEmpty(options.dataset)) {
+			throw new Error("Missing required 'datasetId' in construction");
+		}
+
+		if (isEmpty(options.table)) {
+			throw new Error("Missing required 'tableId' in construction");
+		}
+
+		const envGoogleAppCred = env.getEnvVariable(
+			'GOOGLE_APPLICATION_CREDENTIALS'
+		);
+		const envServiceAccount = env.getEnvVariable('SERVICE_ACCOUNT');
+		const {applicationCredentials} = this.options;
+
+		const credentialsJsonPath =
+			applicationCredentials || envGoogleAppCred || envServiceAccount;
+
+		if (isEmpty(credentialsJsonPath)) {
+			throw new Error(
+				'Missing required GOOGLE_APPLICATION_CREDENTIALS (or SERVICE_ACCOUNT), please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
+			);
+		}
+
+		if (env.isDevelopment() || env.isTest()) {
+			console.log(`loading credentials from ${applicationCredentials}`);
+		}
+
+		this.bigquery = new BigQuery({
+			keyFile: applicationCredentials
+		});
 
 		const {create} = this.options;
 
