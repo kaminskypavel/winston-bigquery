@@ -1,6 +1,5 @@
 import {WinstonBigQuery} from '../';
 import winston from 'winston';
-import {delay} from '../commons/delay';
 
 const logger = winston.createLogger({
 	level: 'debug',

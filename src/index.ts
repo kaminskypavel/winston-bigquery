@@ -50,18 +50,19 @@ export class WinstonBigQuery extends Transport {
 
 		if (
 			isEmpty(env.getEnvVariable('GOOGLE_APPLICATION_CREDENTIALS')) &&
+			isEmpty(env.getEnvVariable('SERVICE_ACCOUNT')) &&
 			isEmpty(options.applicationCredentials)
 		) {
 			throw new Error(
-				'Missing required GOOGLE_APPLICATION_CREDENTIALS, please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
+				'Missing required GOOGLE_APPLICATION_CREDENTIALS (or SERVICE_ACCOUNT), please add it as to construction object or as enviroment variable. read more here : http://bit.ly/2k0D1cj '
 			);
 		}
 
 		if (env.isDevelopment() || env.isTest()) {
 			console.log(
-				`loading GOOGLE_APPLICATION_CREDENTIALS from ${env.getEnvVariable(
+				`loading credentials from ${env.getEnvVariable(
 					'GOOGLE_APPLICATION_CREDENTIALS'
-				)}`
+				) || env.getEnvVariable('SERVICE_ACCOUNT')}`
 			);
 		}
 

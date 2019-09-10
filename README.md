@@ -4,7 +4,6 @@
 [![CircleCI](https://circleci.com/gh/kaminskypavel/winston-bigquery.svg?style=svg)](https://circleci.com/gh/kaminskypavel/winston-bigquery)
 [![npm version](http://img.shields.io/npm/v/winston-bigquery.svg?style=flat)](https://npmjs.org/package/winston-bigquery "View this project on npm")
 
-
 ## Usage
 ``` js
 import {WinstonBigQuery} from 'winston-bigquery';
@@ -29,6 +28,15 @@ logger.info('Hello World', {
 });
 
 ```
+## Credentials  
+in order to access bigquery we need a service account credentials, there are 3 ways to set it
+
+1. pass `applicationCredentials` containing a path to your key file in options
+2. set `GOOGLE_APPLICATION_CREDENTIALS` environment settings  
+3. set `SERVICE_ACCOUNT` environment settings (recommended)
+
+the latter was added since adding `GOOGLE_APPLICATION_CREDENTIALS` is reported 
+to sometimes [break other google sdks](https://stackoverflow.com/questions/54711038/firebase-cloud-functions-failed-to-read-credentials-from-file) (such as firebase) 
 
 
 ## Motivation

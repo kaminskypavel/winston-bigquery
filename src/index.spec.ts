@@ -22,6 +22,7 @@ describe('WinstonBigQuery', () => {
 		it('should verify GOOGLE_APPLICATION_CREDENTIALS is set', () => {
 			const options = {dataset: 'datasetId', table: 'tableId'} as any;
 			process.env['GOOGLE_APPLICATION_CREDENTIALS'] = '';
+			process.env['SERVICE_ACCOUNT'] = '';
 			expect(() => new WinstonBigQuery(options)).toThrow(
 				/Missing required GOOGLE_APPLICATION_CREDENTIALS/
 			);
