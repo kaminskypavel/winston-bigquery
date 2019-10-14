@@ -63,7 +63,7 @@
     "semantic-release": "15.13.24",
     "ts-jest": "24.1.0",
     "ts-node-dev": "1.0.0-pre.43",
-    "typescript": "3.6.3"
+    "typescript": "3.6.4"
   },
   "husky": {
     "hooks": {
