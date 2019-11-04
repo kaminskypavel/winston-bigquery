@@ -42,7 +42,7 @@
     "@semantic-release/release-notes-generator": "7.3.2",
     "@types/dotenv": "6.1.1",
     "@types/flat": "0.0.28",
-    "@types/jest": "24.0.20",
+    "@types/jest": "24.0.21",
     "@types/lodash": "4.14.144",
     "@types/node": "12.11.7",
     "@types/winston": "2.4.4",
