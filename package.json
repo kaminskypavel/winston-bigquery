@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.5",
-    "@semantic-release/commit-analyzer": "6.3.1",
+    "@semantic-release/commit-analyzer": "6.3.2",
     "@semantic-release/git": "7.0.17",
-    "@semantic-release/npm": "5.3.1",
+    "@semantic-release/npm": "5.3.4",
     "@semantic-release/release-notes-generator": "7.3.2",
     "@types/dotenv": "6.1.1",
     "@types/flat": "0.0.28",
@@ -60,7 +60,7 @@
     "jest": "24.9.0",
     "lint-staged": "9.4.2",
     "prettier": "1.18.2",
-    "semantic-release": "15.13.28",
+    "semantic-release": "15.13.30",
     "ts-jest": "24.1.0",
     "ts-node-dev": "1.0.0-pre.43",
     "typescript": "3.6.4"
