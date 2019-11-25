@@ -1,11 +1,12 @@
 {
-	"extends": ["config:base", "schedule:earlyMondays"],
+	"extends": ["config:base", "schedule:monthly"],
 	"automerge": true,
 	"major": {
 		"automerge": false
 	},
 	"packageRules": [
 		{
+			"schedule": ["on the first day of the month"],
 			"depTypeList": ["devDependencies"],
 			"automerge": true
 		}
