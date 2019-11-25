@@ -88,10 +88,12 @@ export class WinstonBigQuery extends Transport {
 	async getTableSchema() {
 		const {dataset, table} = this.options;
 
-		const meta: TableMetaData = ((await this.bigquery
-			.dataset(dataset)
-			.table(table)
-			.getMetadata())[0] as unknown) as TableMetaData;
+		const meta: TableMetaData = ((
+			await this.bigquery
+				.dataset(dataset)
+				.table(table)
+				.getMetadata()
+		)[0] as unknown) as TableMetaData;
 
 		const schema = meta.schema.fields.reduce(
 			(
@@ -116,7 +118,7 @@ export class WinstonBigQuery extends Transport {
 			meta: 'string'
 		};
 
-		const userSchemaFields = flatten(
+		const userSchemaFields: any = flatten(
 			omit(schema, Object.keys(mandatorySchemaFields)),
 			{
 				delimiter: '_'
