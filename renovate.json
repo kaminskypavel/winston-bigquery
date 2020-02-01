@@ -1,14 +1,20 @@
 {
-	"extends": ["config:base", "schedule:monthly"],
+	"extends": [
+		"config:base",
+		"schedule:monthly"
+	],
+	"rebaseStalePrs": true,
+	"automergeType": "branch-push",
 	"automerge": true,
-	"major": {
-		"automerge": false
-	},
 	"packageRules": [
 		{
-			"schedule": ["on the first day of the month"],
-			"depTypeList": ["devDependencies"],
-			"automerge": true
+			"depTypeList": [
+				"dependencies"
+			],
+			"updateTypes": [
+				"major"
+			],
+			"automerge": false
 		}
 	]
 }
