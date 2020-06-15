@@ -14,7 +14,7 @@ const logger = winston.createLogger({
 	transports: [
 		.....
 		new WinstonBigQuery({
-			dataset: 'logs'
+			dataset: 'logs',
 			table: 'winston_logs',
 		})
 		.....
