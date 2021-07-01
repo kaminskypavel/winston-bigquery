@@ -44,7 +44,7 @@
     "@types/flat": "0.0.28",
     "@types/jest": "25.2.3",
     "@types/lodash": "4.14.170",
-    "@types/node": "12.20.13",
+    "@types/node": "12.20.15",
     "@types/winston": "2.4.4",
     "@typescript-eslint/eslint-plugin": "2.18.0",
     "@typescript-eslint/parser": "2.18.0",
