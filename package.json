@@ -62,7 +62,7 @@
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
     "semantic-release": "17.2.3",
-    "ts-jest": "25.1.0",
+    "ts-jest": "25.5.1",
     "ts-node-dev": "1.0.0-pre.44",
     "typescript": "3.7.5"
   },
