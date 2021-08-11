@@ -29,7 +29,6 @@
     "@google-cloud/bigquery": "^5.0.0",
     "dotenv": "^8.2.0",
     "flat": "^4.1.0",
-    "husky": "^3.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.22.2",
     "winston": "^3.2.1"
@@ -58,6 +57,7 @@
     "eslint-plugin-jest": "23.8.1",
     "eslint-plugin-json": "2.1.2",
     "eslint-plugin-prettier": "3.1.2",
+    "husky": "^3.1.0",
     "jest": "26.6.3",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
