@@ -19,7 +19,7 @@ type BigQueryTableSchema = {
 	[n: string]: BigQuerySchemaTypes | BigQueryTableSchema;
 };
 
-interface WinstonBigQueryOptions {
+interface WinstonBigQueryOptions extends Transport.TransportStreamOptions {
 	dataset: string;
 	table: string;
 	applicationCredentials?: string;
@@ -36,7 +36,7 @@ export class WinstonBigQuery extends Transport {
 	private isInitialized: boolean;
 
 	constructor(options: WinstonBigQueryOptions) {
-		super();
+		super(options);
 		dotenv.config();
 
 		this.options = _.extend(
