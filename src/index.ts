@@ -1,5 +1,5 @@
 import Transport from 'winston-transport';
-import {BigQuery} from '@google-cloud/bigquery';
+import {BigQuery, TableMetadata} from '@google-cloud/bigquery';
 import env from './commons/env';
 import {isEmpty, omit} from 'lodash';
 import dotenv from 'dotenv';
@@ -88,12 +88,12 @@ export class WinstonBigQuery extends Transport {
 	async getTableSchema() {
 		const {dataset, table} = this.options;
 
-		const meta: TableMetaData = ((
+		const meta: TableMetadata = (
 			await this.bigquery
 				.dataset(dataset)
 				.table(table)
 				.getMetadata()
-		)[0] as unknown) as TableMetaData;
+		)[0] as unknown;
 
 		const schema = meta.schema.fields.reduce(
 			(
