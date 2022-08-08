@@ -23,6 +23,7 @@ interface WinstonBigQueryOptions extends Transport.TransportStreamOptions {
 	dataset: string;
 	table: string;
 	applicationCredentials?: string;
+	bigquery?: BigQuery;
 	schema?: BigQueryTableSchema;
 	create?: boolean;
 	timeout?: number;
@@ -66,13 +67,17 @@ export class WinstonBigQuery extends Transport {
 		const credentialsJsonPath =
 			applicationCredentials || envGoogleAppCred || envServiceAccount;
 
-		if (env.isDevelopment() || env.isTest()) {
-			console.log(`loading credentials from ${credentialsJsonPath}`);
-		}
+		if (options.bigquery) {
+			this.bigquery = options.bigquery;
+		} else {
+			if (env.isDevelopment() || env.isTest()) {
+				console.log(`loading credentials from ${credentialsJsonPath}`);
+			}
 
-		this.bigquery = new BigQuery({
-			keyFile: applicationCredentials
-		});
+			this.bigquery = new BigQuery({
+				keyFile: applicationCredentials
+			});
+		}
 
 		const {create} = this.options;
 
